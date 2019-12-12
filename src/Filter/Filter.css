@@ -1,0 +1,15 @@
+.filter-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 0 7px;
+    background-color: #DEDEDE;
+}
+
+.filter-label {
+    margin: 5px 7px;
+}
+
+.filter {
+    width: 100px
+}
