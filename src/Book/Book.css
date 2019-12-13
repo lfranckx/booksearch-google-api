@@ -1,0 +1,38 @@
+ul li {
+    list-style-type: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    display: inline;
+}
+
+.book-container {
+    border-bottom: solid grey 1px;
+}
+
+.book-list-item {
+    text-align: center;
+    display: flex;
+    padding: 15px;
+
+}
+
+.thumbnail{
+    align-self: center;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.book-container:hover {
+    background-color: #d0d0d0;
+}

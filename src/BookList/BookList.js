@@ -6,8 +6,11 @@ class BookList extends Component {
     render() {
         const {bookResults} = this.props
         console.log(bookResults)
-        const booklist = bookResults.items.map((book, index) => 
-            <Book book={book} key={index} />)
+        let booklist;
+        if (bookResults) {
+            booklist = bookResults.items.map((book, index) => 
+                <Book book={book} key={index} />)
+        }
         return (
             <section className="booklist-container">
                 <ul>
