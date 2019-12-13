@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Searchbar from './Searchbar/Searchbar'
 import Filter from './Filter/Filter';
-// import BookList from './BookList/BookList'
+import BookList from './BookList/BookList'
 
 class App extends Component {
 
@@ -26,26 +26,26 @@ class App extends Component {
     const formattedUrl = this.formatQueryParams(baseUrl, searchInput, key)
     console.log(formattedUrl)
 
-    // fetch(formattedURL)
-    // .then(response => {
-    //   if(!response.ok) {
-    //     throw new Error('Something went wrong, please try again later')
-    //   }
-    //   return response
-    // })
-    // .then(response => response.json())
-    // .then(responseJson => {
-    //   console.log('Response ok: ', responseJson)
-    //   this.setState({
-    //     bookResults: responseJson,
-    //     error: null
-    //   })
-    // })
-    // .catch(error => {
-    //   this.setState({
-    //     error: error.message
-    //   })
-    // })
+    fetch(formattedUrl)
+    .then(response => {
+      if(!response.ok) {
+        throw new Error('Something went wrong, please try again later')
+      }
+      return response
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      console.log('Response ok: ', responseJson)
+      this.setState({
+        bookResults: responseJson,
+        error: null
+      })
+    })
+    .catch(error => {
+      this.setState({
+        error: error.message
+      })
+    })
   }
 
   formatQueryParams = (baseUrl, searchInput, key) => {
@@ -59,6 +59,7 @@ class App extends Component {
   }
 
   render() {
+    const {bookResults} = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -70,8 +71,9 @@ class App extends Component {
             />
             <Filter 
             />
-            {/* <BookList 
-            /> */}
+            <BookList 
+              bookResults={bookResults}
+            />
         </main>
       </div>
     );
