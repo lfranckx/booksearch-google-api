@@ -5,41 +5,12 @@ class Book extends Component {
 
     render() {
         const {book} = this.props;
-        let author;
-        let title;
-        let thumbnail;
-        let previewLink;
-        let snippet;
-        let cost;
-
-        if (book.volumeInfo) {
-            author = book.volumeInfo.authors !== undefined
-                ?  book.volumeInfo.authors[0]
-                : 'No authors listed'
-            title = book.volumeInfo.title !== undefined
-                ? book.volumeInfo.title
-                : 'No authors listed'
-            thumbnail = book.volumeInfo.imageLinks.thumbnail !== undefined
-                ? book.volumeInfo.imageLinks.thumbnail
-                : 'No image available'
-            previewLink = book.volumeInfo.previewLink !== undefined
-                ? book.volumeInfo.previewLink
-                : 'https://books.google.com/'
-        } else {
-            author = null
-            title = null
-            thumbnail = null
-            previewLink = null
-            cost = null
-        }
-
-        if (book.saleInfo) {
-            cost = book.saleInfo.saleability === 'FOR_SALE'
-            ? '?' + book.saleInfo.listPrice.amount
-            : null
-        } else {
-            cost = null
-        }
+        let author = book.volumeInfo.authors;
+        let title = book.volumeInfo.title;
+        let thumbnail = book.volumeInfo.imageLinks.thumbnail;
+        let previewLink = book.volumeInfo.previewLink;
+        let snippet = book.searchInfo.textSnippet;
+        let cost = book.saleInfo.saleability.listPrice.amount;
 
         return (
             <div className="book-container">

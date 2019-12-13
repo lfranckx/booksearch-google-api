@@ -9,9 +9,25 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchQuery: 'tech',
+      searchQuery: '',
       printType: '',
       bookType: ''
+    }
+  }
+
+  handlePrintType = (printTypeFormEvent) => {
+    if ( printTypeFormEvent ) {
+      this.setState({
+        printType: printTypeFormEvent
+      })
+    }
+  }
+
+  handleBookType = (bookTypeFormEvent) => {
+    if (bookTypeFormEvent) {
+      this.setState({
+        bookType: bookTypeFormEvent
+      })
     }
   }
 
@@ -70,6 +86,8 @@ class App extends Component {
               handleSearchSubmit={this.handleSearchSubmit}
             />
             <Filter 
+              handlePrintType={this.handlePrintType}
+              handleBookType={this.handleBookType}
             />
             <BookList 
               bookResults={bookResults}
